@@ -1,0 +1,34 @@
+replicaCount: 2
+#4.a, 4.b.V, 4.e
+studentName: sdevnozashvili
+#----
+
+#2
+labels:
+   name: sdevnozashvili
+   labelName: label-name
+#----
+
+#4.b
+deployment:
+  #3
+  repository: nginx
+  version: latest
+  #----
+  port: 80  
+#----
+
+#4.d
+service:
+  name: sdevnozashvili-service
+  type: ClusterIP
+  port: 80
+#----
+
+virtualService:
+  name: sdevnozashvili-virtualservice
+  gateway: istio-system/istio-ingress
+  host: sdevnozashvili.ge
+
+serviceAccount:
+  name: sdevnozashvili-serviceaccount
